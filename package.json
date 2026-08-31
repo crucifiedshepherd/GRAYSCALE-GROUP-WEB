@@ -1,0 +1,15 @@
+{
+  "name": "grayscale-group",
+  "private": true,
+  "scripts": {
+    "dev:gate": "pnpm --filter gate dev",
+    "dev:gs": "pnpm --filter grayscale dev",
+    "build:gate": "pnpm --filter gate build",
+    "build:gs": "pnpm --filter grayscale build"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev: gate",
+      "type": "shell",
+      "command": "pnpm dev:gate",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "dev" }
+    },
+    {
+      "label": "dev: grayscale",
+      "type": "shell",
+      "command": "pnpm dev:gs",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "dev" }
+    },
+    {
+      "label": "dev: all",
+      "dependsOn": ["dev: gate", "dev: grayscale"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

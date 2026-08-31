@@ -1,0 +1,47 @@
+/* зерно поверх viewport */
+.fx-grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-fx);
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* halftone-растр */
+.fx-halftone {
+  background-image: radial-gradient(var(--c-gray) 1px, transparent 1.5px);
+  background-size: 5px 5px;
+}
+
+/* хроматическая аберрация на hover */
+.fx-chroma {
+  transition: text-shadow 0.12s steps(2);
+}
+.fx-chroma:hover {
+  text-shadow:
+    2px 0 0 rgba(193, 18, 31, 0.85),
+    -2px 0 0 rgba(0, 120, 255, 0.7);
+}
+
+/* белая sticker-обводка */
+.fx-sticker {
+  box-shadow: 0 0 0 3px var(--c-paper);
+}
+
+/* ржавый штамп */
+.fx-stamp {
+  font-family: var(--f-stencil);
+  color: var(--c-rust);
+  border: 3px solid var(--c-rust);
+  padding: var(--s-1) var(--s-3);
+  text-transform: uppercase;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+
+/* photocopy: жёсткий контраст, ноль цвета */
+.fx-copy {
+  filter: contrast(1.35) saturate(0);
+}

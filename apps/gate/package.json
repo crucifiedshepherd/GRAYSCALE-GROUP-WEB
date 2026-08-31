@@ -1,0 +1,19 @@
+{
+  "name": "gate",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/golos-text": "^5.0.0",
+    "@fontsource/jetbrains-mono": "^5.0.0",
+    "@fontsource/old-standard-tt": "^5.0.0",
+    "@fontsource/oswald": "^5.0.0",
+    "@fontsource/saira-stencil-one": "^5.0.0",
+    "@grayscale/ui": "workspace:*",
+    "astro": "^5.0.0"
+  }
+}

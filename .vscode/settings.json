@@ -1,0 +1,44 @@
+{
+  // format on save: Prettier для всего, оф. расширение Astro для .astro
+  "editor.formatOnSave": true,
+  "[astro]": { "editor.defaultFormatter": "astro-builds.astro-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[yaml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.trimTrailingWhitespace": false
+  },
+
+  // единый стиль кода в репе
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // терминал: Git Bash
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+  // TypeScript из workspace, не встроенный в VS Code
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Prettier из корневого node_modules (pnpm не хоистит — указываем явно)
+  "prettier.prettierPath": "node_modules/prettier",
+
+  // не жечь CPU вотчером/поиском по генерируемому
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.astro/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.astro": true,
+    "**/pnpm-lock.yaml": true
+  }
+}

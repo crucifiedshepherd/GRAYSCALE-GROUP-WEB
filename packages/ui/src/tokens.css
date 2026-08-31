@@ -1,0 +1,31 @@
+/* GRSCL Group дизайн токены */
+:root {
+  /* палитра */
+  --c-black: #0a0a0a;
+  --c-paper: #f2f2f2;
+  --c-gray: #8a8a8a;
+  --c-gray-deep: #3d3d3d;
+  --c-red: #c1121f;
+  --c-rust: #93402b;
+
+  /* fonts */
+  --f-serif: 'Old Standart TT', 'Times New Roman', serif;
+  --f-caps: 'Oswald', 'Arial Narrow', sans-serif;
+  --f-stencil: 'Saira Stencil One', 'Arial Black', sans-serif;
+  --f-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --f-quiet: 'Golos Text', 'Segoe UI', sans-serif;
+
+  /* слои */
+  --z-base: 0;
+  --z-ui: 10;
+  --z-oberlay: 100;
+  --z-fx: 200;
+
+  /* ритм */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 48px;
+  --s-6: 64px;
+}

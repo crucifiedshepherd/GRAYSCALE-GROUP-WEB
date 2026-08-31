@@ -1,0 +1,33 @@
+<div class="logo" aria-label="GRAYSCALE GROUP">
+  <span class="x">✕</span>
+  <h1>Grayscale<br />Group</h1>
+  <span class="x">✕</span>
+</div>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-4);
+    padding: var(--s-6) var(--s-3) var(--s-4);
+  }
+  h1 {
+    font-family: var(--f-serif);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(40px, 8vw, 96px);
+    line-height: .9;
+    margin: 0;
+    text-align: center;
+    animation: flicker 3s infinite steps(3);
+  }
+  .x { color: var(--c-red); font-family: var(--f-mono); font-size: clamp(16px, 3vw, 28px); }
+  @keyframes flicker {
+    0%, 92% { opacity: 1; }
+    93% { opacity: .4; }
+    94% { opacity: 1; }
+    97% { opacity: .7; }
+    100% { opacity: 1; }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import GateLayout from '../layouts/GateLayout.astro';
+import LogoAnim from '../components/LogoAnim.astro';
+import Door from '../components/Door.astro';
+import ListForm from '../components/ListForm.astro';
+---
+<GateLayout title="GRAYSCALE GROUP">
+  <main>
+    <LogoAnim />
+    <section class="doors">
+      <Door title="GRAYSCALE" subtitle="принты / одежда / свои" href="http://localhost:4322" />
+      <Door title="WORKFORCE" subtitle="видеопродакшн полного цикла" soon />
+    </section>
+    <section class="manifest">
+      <p>мы — свои. живём по своим правилам.</p>
+      <p>снаружи — по личному желанию. внутри — поддержка.</p>
+      <p class="loud">FUCK YOUR MOTHERFUCKING CULTURE</p>
+    </section>
+    <ListForm />
+  </main>
+</GateLayout>
+
+<style>
+  main { max-width: 960px; margin: 0 auto; }
+  .doors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-3);
+    padding: 0 var(--s-3);
+  }
+  @media (max-width: 700px) { .doors { grid-template-columns: 1fr; } }
+  .manifest {
+    text-align: center;
+    padding: var(--s-6) var(--s-3);
+    font-family: var(--f-caps);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--c-gray);
+  }
+  .loud { color: var(--c-paper); font-weight: 600; }
+</style>
