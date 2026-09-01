@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Marquee from '../components/Marquee.astro';
+import PrintCard from '../components/PrintCard.astro';
+import { getCollection } from 'astro:content';
+
+const prints = await getCollection('prints');
+---
+<BaseLayout title="GRAYSCALE — одежда для своих">
+  <main>
+    <section class="hero">
+      <h1>Fuck Humanity</h1>
+      <p class="sub">одежда для своих. глобус и колючка — как есть.</p>
+    </section>
+    <Marquee />
+    <section class="drop">
+      <h2>дроп 01</h2>
+      <div class="grid">
+        {prints.map((p) => <PrintCard entry={p} />)}
+      </div>
+    </section>
+    <section id="philosophy" class="philosophy">
+      <p>мы — свои. живём по своим правилам.</p>
+      <p>никто не принуждает. всё по личному желанию.</p>
+      <p class="loud">FUCK YOUR MOTHERFUCKING CULTURE</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero { text-align: center; padding: var(--s-6) var(--s-3) var(--s-4); }
+  .hero h1 {
+    font-family: var(--f-stencil);
+    font-size: clamp(40px, 7vw, 84px);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .sub { font-family: var(--f-mono); color: var(--c-gray); }
+  .drop { max-width: 1100px; margin: 0 auto; padding: var(--s-5) var(--s-3); }
+  .drop h2 { font-family: var(--f-caps); text-transform: uppercase; letter-spacing: .08em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--s-4); }
+  .philosophy {
+    text-align: center;
+    padding: var(--s-6) var(--s-3);
+    font-family: var(--f-caps);
+    text-transform: uppercase;
+    color: var(--c-gray);
+  }
+  .loud { color: var(--c-paper); font-weight: 600; }
+</style>

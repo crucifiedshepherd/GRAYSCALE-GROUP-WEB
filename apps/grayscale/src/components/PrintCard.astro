@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { entry: CollectionEntry<'prints'>; }
+const { entry } = Astro.props;
+const { title, status, sizes, edition } = entry.data;
+---
+<a href={`/prints/${entry.id}`} class="card fx-sticker fx-chroma">
+  <div class="art fx-halftone">
+    {status === 'sold-out' && <span class="x">✕</span>}
+  </div>
+  <h3>{title}</h3>
+  <p class="meta">{sizes} / тираж {edition}</p>
+  {status === 'sold-out' && <span class="fx-stamp">sold out</span>}
+  {status === 'soon' && <span class="fx-stamp">скоро</span>}
+</a>
+
+<style>
+  .card {
+    display: block;
+    padding: var(--s-3);
+    text-decoration: none;
+    background: var(--c-black);
+  }
+  .art {
+    height: 220px;
+    border: 1px solid var(--c-gray-deep);
+    display: grid;
+    place-items: center;
+    margin-bottom: var(--s-3);
+  }
+  .x { color: var(--c-red); font-size: 64px; font-family: var(--f-mono); }
+  h3 { font-family: var(--f-serif); text-transform: uppercase; margin: 0 0 var(--s-1); }
+  .meta { font-family: var(--f-mono); color: var(--c-gray); margin: 0; }
+  .fx-stamp { margin-top: var(--s-2); }
+</style>

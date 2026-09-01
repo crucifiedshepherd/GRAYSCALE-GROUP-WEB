@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — GRAYSCALE">
+  <main class="oops">
+    <p class="x">✕ ✕</p>
+    <h1>не туда</h1>
+    <a href="/">к своим</a>
+  </main>
+</BaseLayout>
+
+<style>
+  .oops { text-align: center; padding: var(--s-6) var(--s-3); }
+  .x { color: var(--c-red); font-family: var(--f-mono); font-size: 40px; }
+  h1 { font-family: var(--f-serif); text-transform: uppercase; }
+  a { font-family: var(--f-mono); color: var(--c-gray); }
+</style>

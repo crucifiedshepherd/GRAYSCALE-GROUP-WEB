@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrintCard from '../../components/PrintCard.astro';
+import { getCollection } from 'astro:content';
+
+const prints = await getCollection('prints');
+---
+<BaseLayout title="архив принтов — GRAYSCALE">
+  <main class="wrap">
+    <h1>архив принтов</h1>
+    <div class="grid">
+      {prints.map((p) => <PrintCard entry={p} />)}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .wrap { max-width: 1100px; margin: 0 auto; padding: var(--s-5) var(--s-3); }
+  h1 { font-family: var(--f-serif); text-transform: uppercase; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--s-4); }
+</style>

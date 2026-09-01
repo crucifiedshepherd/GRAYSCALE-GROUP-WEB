@@ -1,0 +1,20 @@
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>FUCK HUMANITY ✕ IN MUNDO NON MUTAT ✕ RUSSIA CRISIS VETERAN ✕ СВОИ ПРАВИЛА ✕&nbsp;</span>
+    <span>FUCK HUMANITY ✕ IN MUNDO NON MUTAT ✕ RUSSIA CRISIS VETERAN ✕ СВОИ ПРАВИЛА ✕&nbsp;</span>
+  </div>
+</div>
+
+<style>
+  .marquee { overflow: hidden; border-block: 1px solid var(--c-gray-deep); }
+  .track {
+    display: flex;
+    white-space: nowrap;
+    font-family: var(--f-caps);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--c-gray);
+    animation: scroll 22s linear infinite;
+  }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+</style>

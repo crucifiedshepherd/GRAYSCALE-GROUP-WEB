@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Stamp from '../../components/Stamp.astro';
+import Barcode from '../../components/Barcode.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const prints = await getCollection('prints');
+  return prints.map((p) => ({ params: { slug: p.id } }));
+}
+
+const prints = await getCollection('prints');
+const entry = prints.find((p) => p.id === Astro.params.slug)!;
+const { title, status, sizes, edition, colors, series, desc_ru } = entry.data;
+const { Content } = await render(entry);
+---
+<BaseLayout title={`${title} — GRAYSCALE`}>
+  <main class="wrap">
+    <p class="crumbs"><a href="/prints">архив</a> / {title}</p>
+    <div class="cols">
+      <div class="art fx-halftone">{status === 'sold-out' && <span class="x">✕</span>}</div>
+      <div>
+        <h1>{title}</h1>
+        <p class="desc">{desc_ru}</p>
+        <ul class="meta">
+          <li>серия: {series}</li>
+          <li>размеры: {sizes}</li>
+          <li>тираж: {edition}</li>
+          <li>цвета: {colors}</li>
+        </ul>
+        {status === 'sold-out' && <Stamp text="sold out" />}
+        {status === 'soon' && <Stamp text="скоро" />}
+        {status === 'available' && <a class="grab" href="#">забрать → telegram</a>}
+        <Barcode />
+      </div>
+    </div>
+    <section class="body"><Content /></section>
+  </main>
+</BaseLayout>
+
+<style>
+  .wrap { max-width: 1000px; margin: 0 auto; padding: var(--s-5) var(--s-3); }
+  .crumbs { font-family: var(--f-mono); color: var(--c-gray); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+  .art { height: 320px; border: 1px solid var(--c-gray-deep); display: grid; place-items: center; }
+  .x { color: var(--c-red); font-size: 80px; font-family: var(--f-mono); }
+  h1 { font-family: var(--f-serif); text-transform: uppercase; }
+  .desc { color: var(--c-gray); }
+  .meta { font-family: var(--f-mono); color: var(--c-gray); list-style: none; padding: 0; }
+  .meta li { margin-bottom: var(--s-1); }
+  .grab {
+    display: inline-block;
+    margin: var(--s-3) 0;
+    padding: var(--s-2) var(--s-4);
+    background: var(--c-paper);
+    color: var(--c-black);
+    font-family: var(--f-caps);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .grab:hover { background: var(--c-red); color: var(--c-paper); }
+  .body { margin-top: var(--s-5); font-family: var(--f-quiet); }
+</style>
