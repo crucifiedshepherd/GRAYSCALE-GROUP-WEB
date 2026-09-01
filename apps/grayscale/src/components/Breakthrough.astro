@@ -1,0 +1,118 @@
+<div id="wall">
+  <p class="hint" id="hint">тьма не вечна. бей по ней.</p>
+  <span class="flash" id="flash"></span>
+</div>
+
+<script>
+  const wall = document.getElementById('wall')!;
+  const hint = document.getElementById('hint')!;
+  const flash = document.getElementById('flash')!;
+  const NEED = 7;
+  let hits = 0;
+
+  const jumpHint = () => {
+    hint.style.left = `${10 + Math.random() * 80}%`;
+    hint.style.top = `${10 + Math.random() * 80}%`;
+    hint.style.transform = `rotate(${Math.floor(Math.random() * 15) - 7}deg)`;
+  };
+
+  const crackAt = (x: number, y: number, big = false) => {
+    const c = document.createElement('span');
+    c.className = 'crack';
+    if (big) c.classList.add('big');
+    c.style.left = `${x}px`;
+    c.style.top = `${y}px`;
+    c.style.transform = `translate(-50%,-50%) rotate(${Math.floor(Math.random() * 360)}deg)`;
+    wall.appendChild(c);
+  };
+
+  const impactAt = (x: number, y: number) => {
+    const r = document.createElement('span');
+    r.className = 'ring';
+    r.style.left = `${x}px`;
+    r.style.top = `${y}px`;
+    wall.appendChild(r);
+    setTimeout(() => r.remove(), 500);
+  };
+
+  wall.addEventListener('click', (e) => {
+    hits += 1;
+    impactAt(e.clientX, e.clientY);
+    crackAt(e.clientX, e.clientY, true);
+    for (let i = 0; i < 2; i++) {
+      crackAt(Math.random() * innerWidth, Math.random() * innerHeight);
+    }
+    flash.classList.remove('on');
+    void flash.offsetWidth;
+    flash.classList.add('on');
+    wall.classList.remove('shake');
+    void wall.offsetWidth;
+    wall.classList.add('shake');
+    hint.textContent = `удар ${hits} из ${NEED}. бей.`;
+    jumpHint();
+    if (hits >= NEED) {
+      wall.classList.add('broken');
+      setTimeout(() => wall.remove(), 700);
+    }
+  });
+</script>
+
+<style>
+  #wall {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    background: #050505;
+    cursor: crosshair;
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  #wall.broken { opacity: 0; transform: scale(1.06); pointer-events: none; }
+  #wall.shake { animation: shake .18s linear; }
+  @keyframes shake {
+    25% { transform: translate(3px, -3px); }
+    50% { transform: translate(-3px, 3px); }
+    75% { transform: translate(2px, 2px); }
+  }
+  .hint {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-family: var(--f-mono);
+    color: var(--c-gray-deep);
+    transition: left .12s steps(3), top .12s steps(3);
+    user-select: none;
+  }
+  .flash { position: absolute; inset: 0; background: rgba(242, 242, 242, .16); opacity: 0; pointer-events: none; }
+  .flash.on { animation: flash .18s ease-out; }
+  @keyframes flash { from { opacity: 1; } to { opacity: 0; } }
+  .crack {
+    position: absolute;
+    width: 90px;
+    height: 2px;
+    background: var(--c-paper);
+    box-shadow: 0 0 12px rgba(242, 242, 242, .7);
+  }
+  .crack.big { width: 160px; height: 3px; }
+  .crack::before,
+  .crack::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+    height: 2px;
+    background: var(--c-paper);
+  }
+  .crack::before { transform: translate(-50%, -50%) rotate(52deg); }
+  .crack::after { transform: translate(-50%, -50%) rotate(-47deg); }
+  .ring {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--c-paper);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring .45s ease-out forwards;
+  }
+  @keyframes ring { to { width: 140px; height: 140px; opacity: 0; } }
+</style>

@@ -1,4 +1,4 @@
-/* GRSCL Group дизайн токены */
+/* GRAYSCALE GROUP — дизайн-токены v3 */
 :root {
   /* палитра */
   --c-black: #0a0a0a;
@@ -8,17 +8,18 @@
   --c-red: #c1121f;
   --c-rust: #93402b;
 
-  /* fonts */
-  --f-serif: 'Old Standart TT', 'Times New Roman', serif;
+  /* типографика */
+  --f-serif: 'Old Standard TT', 'Times New Roman', serif;
   --f-caps: 'Oswald', 'Arial Narrow', sans-serif;
-  --f-stencil: 'Saira Stencil One', 'Arial Black', sans-serif;
+  --f-stencil: 'Wargate', 'Saira Stencil One', 'Arial Black', sans-serif;
+  --f-gothic: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
   --f-mono: 'JetBrains Mono', 'Consolas', monospace;
-  --f-quiet: 'Golos Text', 'Segoe UI', sans-serif;
+  --f-quiet: 'Garamond', 'Golos Text', 'Segoe UI', serif;
 
   /* слои */
   --z-base: 0;
   --z-ui: 10;
-  --z-oberlay: 100;
+  --z-overlay: 100;
   --z-fx: 200;
 
   /* ритм */
@@ -26,6 +27,6 @@
   --s-2: 8px;
   --s-3: 16px;
   --s-4: 24px;
-  --s-5: 48px;
+  --s-5: 40px;
   --s-6: 64px;
 }
