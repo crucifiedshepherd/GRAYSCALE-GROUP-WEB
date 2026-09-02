@@ -157,3 +157,14 @@
     opacity: 1;
   }
 }
+/* огонь-гифка поверх фото: чёрный растворяется через screen */
+.fire-gif {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}

@@ -16,7 +16,7 @@ const archive = prints
           <div class:list={['photo', { 'fx-halftone': !p.data.images[0], burned: p.data.status === 'burned', wip: p.data.status === 'soon', burn: p.data.status === 'burned' }]}>
             {p.data.images[0] && <img class="shot" src={p.data.images[0]} alt={p.data.title} />}
             {(p.data.status === 'sold-out' || p.data.status === 'burned') && <span class="x">✕</span>}
-            {p.data.status === 'burned' && <><span class="char" aria-hidden="true"></span><span class="flame" aria-hidden="true"></span></>}
+            {p.data.status === 'burned' && <img class="fire-gif" src="/media/fire.gif" alt="" />}
             {p.data.status === 'soon' && <span class="wip-label">в разработке</span>}
           </div>
           <div class="info">

@@ -12,7 +12,7 @@ const stencil = entry.id === 'russia-crisis-veteran';
   <div class:list={['art', { 'fx-halftone': !images[0], burned, wip, burn: burned }]}>
     {images[0] && <img class="shot" src={images[0]} alt={title} />}
     {(status === 'sold-out' || burned) && <span class="x">✕</span>}
-    {burned && <><span class="char" aria-hidden="true"></span><span class="flame" aria-hidden="true"></span></>}
+    {burned && <img class="fire-gif" src="/media/fire.gif" alt="" />}
     {wip && <span class="wip-label">в разработке</span>}
     {burned && <span class="fx-stamp burn-stamp">сгорел</span>}
   </div>
