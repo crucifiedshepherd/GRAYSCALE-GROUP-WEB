@@ -55,7 +55,10 @@
     jumpHint();
     if (hits >= NEED) {
       wall.classList.add('broken');
-      setTimeout(() => wall.remove(), 700);
+      setTimeout(() => {
+        window.dispatchEvent(new Event('gg-wall-broken'));
+        wall.remove();
+      }, 700);
     }
   });
 </script>

@@ -12,6 +12,7 @@ import '@fontsource/golos-text/400.css';
 import '@fontsource/golos-text/500.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Perf from '../components/Perf.astro';
 
 interface Props { title: string; }
 const { title } = Astro.props;
@@ -27,6 +28,7 @@ const { title } = Astro.props;
     <Header />
     <slot />
     <Footer />
+    <Perf />
   </body>
 </html>
 

@@ -65,6 +65,9 @@ importers:
       astro:
         specifier: ^5.0.0
         version: 5.18.2(rollup@4.63.1)(typescript@7.0.2)
+      web-vitals:
+        specifier: ^6.2.1
+        version: 6.2.1
 
   packages/ui: {}
 
@@ -1844,6 +1847,9 @@ packages:
 
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
+
+  web-vitals@6.2.1:
+    resolution: {integrity: sha512-rLcLXA2sx6+9dE88NHFubwTtGxpK4yYBLj6qHPdFoCaLr0cXGb4efOqtKLlm4loGA4OEKHIQKMKzZkKyOh5ctw==}
 
   which-pm-runs@1.1.0:
     resolution: {integrity: sha512-n1brCuqClxfFfq/Rb0ICg9giSZqCS+pLtccdag6C2HyufBrh3fBOiy9nb6ggRMvWOVH5GrdJskj5iGTZNxd7SA==}
@@ -3736,6 +3742,8 @@ snapshots:
       vite: 6.4.3
 
   web-namespaces@2.0.1: {}
+
+  web-vitals@6.2.1: {}
 
   which-pm-runs@1.1.0: {}
 

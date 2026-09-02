@@ -20,13 +20,12 @@ const { Content } = await render(entry);
 <BaseLayout title={`${title} — GRAYSCALE`}>
   <main class="wrap">
     <p class="crumbs"><a href="/prints">архив</a> / {title}</p>
-    <div class="cols">
-      <div class:list={['art', { 'fx-halftone': !images[0], burned, wip }]}>
-        {images[0] && <img class="shot" src={images[0]} alt={title} />}
-        {(status === 'sold-out' || burned) && <span class="x">✕</span>}
-        {burned && <><span class="char" aria-hidden="true"></span><span class="flame" aria-hidden="true"></span></>}
-        {wip && <span class="wip-label">в разработке</span>}
-      </div>
+    <div class:list={['art', { 'fx-halftone': !images[0], burned, wip, burn: burned }]}>
+      {images[0] && <img class="shot" src={images[0]} alt={title} />}
+      {(status === 'sold-out' || burned) && <span class="x">✕</span>}
+      {burned && <><span class="char" aria-hidden="true"></span><span class="flame" aria-hidden="true"></span></>}
+      {wip && <span class="wip-label">в разработке</span>}
+    </div>
       <div>
         <h1 class:list={[{ stencil }]}>{title}</h1>
         <p class="desc">{desc_ru}</p>

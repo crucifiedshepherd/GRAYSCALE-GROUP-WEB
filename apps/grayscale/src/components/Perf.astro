@@ -1,0 +1,40 @@
+<script>
+  import { onCLS, onFCP, onINP, onLCP } from 'web-vitals';
+
+  const rows: { metric: string; value: string }[] = [];
+
+  const panel = document.createElement('pre');
+  panel.style.cssText =
+    'position:fixed;left:12px;bottom:12px;z-index:500;background:#0a0a0a;color:#f2f2f2;border:1px solid #3d3d3d;padding:8px 12px;font:12px "JetBrains Mono",monospace;display:none;white-space:pre;';
+  document.body.appendChild(panel);
+
+  const render = () => {
+    panel.textContent = rows.map((r) => `${r.metric}: ${r.value}`).join('\n');
+  };
+
+  const set = (metric: string, value: string) => {
+    const found = rows.find((r) => r.metric === metric);
+    if (found) found.value = value;
+    else rows.push({ metric, value });
+    console.table(rows);
+    localStorage.setItem('gg-perf', JSON.stringify(rows));
+    render();
+  };
+
+  window.addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') return;
+    if (e.key.toLowerCase() === 'p' || e.key.toLowerCase() === 'з') {
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+      render();
+    }
+  });
+
+  onFCP((m) => set('FCP', `${Math.round(m.value)} ms`));
+  onLCP((m) => set('LCP', `${Math.round(m.value)} ms`));
+  onCLS((m) => set('CLS', m.value.toFixed(3)));
+  onINP((m) => set('INP', `${Math.round(m.value)} ms`));
+  window.addEventListener('gg-wall-broken', () => {
+    set('WALL-BREAK', `${Math.round(performance.now())} ms`);
+  });
+</script>
