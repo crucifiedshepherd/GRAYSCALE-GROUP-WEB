@@ -21,7 +21,7 @@ pnpm dev:gs # grayscale → http://localhost:4322
 ## Контент (принты)
 
 Файлы: `apps/grayscale/content/prints/*.md`.
-Статусы: `available` (на главной), `sold-out`, `burned` (огонь), `soon` («в разработке», в архиве).
+Статусы: `available` (на главной), `sold-out`, `burned` (сгорел), `soon` («в разработке», в архиве).
 Добавить принт = создать md с frontmatter по схеме из `src/content.config.ts`.
 Картинки класть в `apps/grayscale/public/media/`, пути — в `images:`.
 
