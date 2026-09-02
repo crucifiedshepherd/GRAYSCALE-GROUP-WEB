@@ -49,6 +49,9 @@
     void wall.offsetWidth;
     wall.classList.add('shake');
     hint.textContent = `удар ${hits} из ${NEED}. бей.`;
+    if (hits == 6) hint.textContent = 'СИЛЬНЕЕ!';
+        else if (hits == 4 ) hint.textContent = 'БЕЙ!';
+    else hint.textContent = `удар ${hits} из ${NEED}. бей.`;
     jumpHint();
     if (hits >= NEED) {
       wall.classList.add('broken');

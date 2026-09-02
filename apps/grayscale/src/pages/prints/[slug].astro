@@ -24,7 +24,7 @@ const { Content } = await render(entry);
       <div class:list={['art', { 'fx-halftone': !images[0], burned, wip }]}>
         {images[0] && <img class="shot" src={images[0]} alt={title} />}
         {(status === 'sold-out' || burned) && <span class="x">✕</span>}
-        {burned && <span class="fire" aria-hidden="true"></span>}
+        {burned && <><span class="char" aria-hidden="true"></span><span class="flame" aria-hidden="true"></span></>}
         {wip && <span class="wip-label">в разработке</span>}
       </div>
       <div>
